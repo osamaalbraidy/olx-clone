@@ -147,3 +147,60 @@ export async function fetchCategoryFieldsByCategory(
   }
 }
 
+export interface CategoryFieldsByExternalIDParams {
+  categoryExternalIDs: string;
+  includeWithoutCategory?: boolean;
+  splitByCategoryIDs?: boolean;
+  flatChoices?: boolean;
+  groupChoicesBySection?: boolean;
+  flat?: boolean;
+}
+
+export async function fetchCategoryFieldsByExternalID(
+  params: CategoryFieldsByExternalIDParams
+): Promise<CategoryFieldsResponse> {
+  try {
+    const queryParams = new URLSearchParams({
+      categoryExternalIDs: params.categoryExternalIDs,
+      ...(params.includeWithoutCategory !== undefined && {
+        includeWithoutCategory: params.includeWithoutCategory.toString(),
+      }),
+      ...(params.splitByCategoryIDs !== undefined && {
+        splitByCategoryIDs: params.splitByCategoryIDs.toString(),
+      }),
+      ...(params.flatChoices !== undefined && {
+        flatChoices: params.flatChoices.toString(),
+      }),
+      ...(params.groupChoicesBySection !== undefined && {
+        groupChoicesBySection: params.groupChoicesBySection.toString(),
+      }),
+      ...(params.flat !== undefined && {
+        flat: params.flat.toString(),
+      }),
+    });
+
+    const url = `${OLX_API_BASE}/categoryFields?${queryParams.toString()}`;
+    console.log(`🔗 Fetching category fields by external ID from: ${url}`);
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`❌ API Error (${response.status}):`, errorText);
+      throw new Error(`Failed to fetch category fields: ${response.statusText}`);
+    }
+
+    const data: CategoryFieldsResponse = await response.json();
+    console.log(`✅ Fetched category fields by external ID`);
+    return data;
+  } catch (error) {
+    console.error('Error fetching category fields by external ID:', error);
+    throw error;
+  }
+}
+

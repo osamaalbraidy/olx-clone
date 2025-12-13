@@ -1,0 +1,415 @@
+.container {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.formContainer {
+  flex: 3;
+}
+
+.rightContainer {
+  flex: 1;
+}
+
+.loading {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionLabel {
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 14px;
+}
+
+.required {
+  color: #d32f2f;
+  margin-left: 2px;
+}
+
+/* Category Display */
+.categoryDisplay {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+.categoryIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffeb3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.categoryInfo {
+  flex: 1;
+}
+
+.categoryName {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+
+.categorySubName {
+  font-size: 12px;
+  color: #666;
+}
+
+.changeButton {
+  color: #002f34;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.changeButton:hover {
+  color: #004d56;
+}
+
+/* Image Upload */
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.imageUploadButton {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px dashed #002f34;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #f0f9fa;
+  transition: all 0.2s ease;
+}
+
+.imageUploadButton:hover {
+  background: #e0f4f6;
+  border-color: #004d56;
+}
+
+.plusIcon {
+  font-size: 2rem;
+  color: #002f34;
+}
+
+.imageSlot {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.cameraIcon {
+  font-size: 1.5rem;
+  color: #999;
+}
+
+.uploadedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageHint {
+  font-size: 12px;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+/* Price Input */
+.priceInput {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.currency {
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.priceField {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.priceField:focus {
+  outline: none;
+}
+
+/* Checkboxes Row */
+.checkboxRow {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #002f34;
+}
+
+/* Delivery Section */
+.deliverySection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .toggleSlider {
+  background-color: #002f34;
+}
+
+.toggle input:checked + .toggleSlider:before {
+  transform: translateX(26px);
+}
+
+.deliveryText {
+  font-size: 14px;
+  color: #666;
+  flex: 1;
+}
+
+.link {
+  color: #002f34;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: #004d56;
+}
+
+/* Input Fields */
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #333;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #002f34;
+}
+
+/* Phone Input */
+.phoneInput {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.countryCode {
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.phoneField {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.phoneField:focus {
+  outline: none;
+}
+
+/* Pill Buttons */
+.pillGroup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.pill:hover {
+  border-color: #002f34;
+}
+
+.pillActive {
+  background: #002f34;
+  color: white;
+  border-color: #002f34;
+}
+
+/* Sidebar */
+.sidebar {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.sidebarTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.sidebarText {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.sidebarList li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebarLink {
+  color: #002f34;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.sidebarLink:hover {
+  color: #004d56;
+}
+
+.sidebarFooter {
+  font-size: 12px;
+  color: #666;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .checkboxRow {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
