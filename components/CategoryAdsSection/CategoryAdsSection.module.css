@@ -1,0 +1,66 @@
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.categoryTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #002f34;
+  margin: 0;
+}
+
+.viewMoreLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #002f34;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.viewMoreArrow {
+  width: 12px;
+  height: 12px;
+  color: #002f34;
+}
+
+.adsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .adsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categoryTitle {
+    font-size: 18px;
+  }
+
+  .adsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .adsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+

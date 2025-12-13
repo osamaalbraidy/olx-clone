@@ -1,0 +1,24 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--olx-primary);
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logoSvg {
+  width: 60px;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logoSvg {
+    width: 45px;
+  }
+}
+

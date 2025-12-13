@@ -1,0 +1,142 @@
+.footer {
+  background: #f2f4f5;
+  border-top: 1px solid #e4e4e4;
+  padding: 40px 0px 0;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footerSectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #002f34;
+  margin: 0;
+}
+
+.footerList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footerList li a {
+  color: #406367;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footerList li a:hover {
+  color: #002f34;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f2f4f5;
+  color: #002f34;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+  border: 1px solid #002f34;
+}
+
+.socialIcon:hover {
+  background: #002f34;
+  color: #ffffff;
+}
+
+.socialIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footerAppBadges {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.footerAppBadge {
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footerAppBadge:hover {
+  opacity: 0.8;
+}
+
+.footerAppBadge img {
+  height: 33px;
+  width: auto;
+  display: block;
+}
+
+.footerBottom {
+  background: #ffc107;
+  padding: 16px 20px;
+  text-align: right;
+}
+
+.footerBottom p {
+  color: #002f34;
+  font-size: 12px;
+  margin: 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .footerContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 24px 16px 0;
+  }
+
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .socialIcons {
+    justify-content: center;
+  }
+
+  .footerAppBadges {
+    align-items: center;
+  }
+}
+

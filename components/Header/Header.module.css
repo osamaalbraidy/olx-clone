@@ -1,0 +1,210 @@
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid #e4e4e4;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.headerRow1 {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.headerRow2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Location Selector */
+.locationSelector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 140px;
+}
+
+.locationSelector:hover {
+  border-color: #002f34;
+}
+
+.locationPin {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: block;
+  color: #ffce32;
+}
+
+.locationText {
+  font-size: 14px;
+  color: #406367;
+  font-weight: 400;
+  flex: 1;
+}
+
+.locationArrow {
+  width: 12px;
+  height: 12px;
+  color: #002f34;
+  flex-shrink: 0;
+}
+
+/* Search Container */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 300px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+  font-size: 14px;
+  color: #002f34;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: #002f34;
+}
+
+.searchInput::placeholder {
+  color: #c4c4c4;
+}
+
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 40px;
+  background: #5dcbf4;
+  border: 1px solid #5dcbf4;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+}
+
+.searchButton:hover {
+  background: #5dcbf4;
+}
+
+.searchButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Header Actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.loginLink {
+  color: #002f34;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid #d32f2f;
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+
+.loginLink:hover {
+  color: #d32f2f;
+}
+
+.sellButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffce32;
+  color: #002f34;
+  padding: 10px 16px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.sellButton:hover {
+  background: #f5c420;
+}
+
+@media (max-width: 768px) {
+  .headerContent {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .headerRow2 {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .locationSelector {
+    width: 100%;
+  }
+
+  .searchContainer {
+    width: 100%;
+    min-width: auto;
+    max-width: none;
+  }
+
+  .headerActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1024px) {
+  .searchContainer {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sellButton {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .loginLink {
+    font-size: 12px;
+  }
+}
+

@@ -1,0 +1,123 @@
+.appPromotion {
+  background: #f2f4f5;
+  border-top: 1px solid #e4e4e4;
+  margin-top: 48px;
+  padding-top: 30px;
+}
+
+.appPromotionContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.appPromotionText {
+  flex: 0 0 auto;
+  min-width: 400px;
+  padding-bottom: 30px;
+}
+
+.appPromotionTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: #002f34;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.appPromotionSubtitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: #57b9df;
+  line-height: 1.4;
+}
+
+.appPromotionImage {
+  flex: 0 0 auto;
+  width: 147px;
+  height: 147px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: -3px;
+}
+
+.appPromotionImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.appPromotionBadges {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  flex: 0 0 auto;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+}
+
+.appBadge {
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.appBadge:hover {
+  opacity: 0.8;
+}
+
+.appBadge img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .appPromotionContent {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .appPromotionImage {
+    width: 150px;
+    height: 150px;
+  }
+
+  .appPromotionBadges {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .appPromotion {
+    padding: 24px 16px;
+  }
+
+  .appPromotionContent {
+    gap: 20px;
+  }
+
+  .appPromotionImage {
+    width: 120px;
+    height: 120px;
+  }
+
+  .appPromotionBadges {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .appBadge img {
+    height: 35px;
+  }
+}
+

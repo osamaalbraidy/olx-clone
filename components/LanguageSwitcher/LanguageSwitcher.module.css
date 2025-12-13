@@ -1,0 +1,17 @@
+.languageButton {
+  background: none;
+  border: none;
+  color: #002f34;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.languageButton:hover {
+  background: #f2f4f5;
+}
+

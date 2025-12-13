@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "home": "Home",
+    "postAd": "Post An Ad"
+  },
+  "home": {
+    "title": "OLX Lebanon",
+    "subtitle": "Buy and Sell Anything",
+    "loading": "Loading ads...",
+    "error": "Failed to load ads. Please try again later.",
+    "noAds": "No ads found."
+  },
+  "postAd": {
+    "title": "Post your ad",
+    "chooseCategory": "Choose a category",
+    "category": "Category",
+    "uploadImages": "Upload images",
+    "coverImageRecommendation": "For the cover picture we recommend using the landscape mode.",
+    "addVideo": "Add a video",
+    "enterYoutubeUrl": "Enter Youtube video URL",
+    "required": "Required",
+    "select": "Select",
+    "enter": "Enter",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "next": "Next",
+    "previous": "Previous",
+    "formErrors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address",
+      "invalidNumber": "Please enter a valid number",
+      "minLength": "Minimum length is {{min}} characters",
+      "maxLength": "Maximum length is {{max}} characters"
+    }
+  },
+  "adCard": {
+    "price": "Price",
+    "location": "Location",
+    "viewDetails": "View Details"
+  },
+  "language": {
+    "switch": "Switch Language",
+    "english": "English",
+    "arabic": "Arabic"
+  }
+}
+

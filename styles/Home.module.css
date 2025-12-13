@@ -1,0 +1,22 @@
+.container {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Main Content */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+}

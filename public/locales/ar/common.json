@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "postAd": "نشر إعلان"
+  },
+  "home": {
+    "title": "أولكس لبنان",
+    "subtitle": "اشتري وبيع أي شيء",
+    "loading": "جاري تحميل الإعلانات...",
+    "error": "فشل تحميل الإعلانات. يرجى المحاولة مرة أخرى لاحقاً.",
+    "noAds": "لم يتم العثور على إعلانات."
+  },
+  "postAd": {
+    "title": "انشر إعلانك",
+    "chooseCategory": "اختر فئة",
+    "category": "الفئة",
+    "uploadImages": "رفع الصور",
+    "coverImageRecommendation": "لصورة الغلاف ننصح باستخدام الوضع الأفقي.",
+    "addVideo": "أضف فيديو",
+    "enterYoutubeUrl": "أدخل رابط فيديو يوتيوب",
+    "required": "مطلوب",
+    "select": "اختر",
+    "enter": "أدخل",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "next": "التالي",
+    "previous": "السابق",
+    "formErrors": {
+      "required": "هذا الحقل مطلوب",
+      "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+      "invalidNumber": "يرجى إدخال رقم صحيح",
+      "minLength": "الحد الأدنى للطول هو {{min}} أحرف",
+      "maxLength": "الحد الأقصى للطول هو {{max}} أحرف"
+    }
+  },
+  "adCard": {
+    "price": "السعر",
+    "location": "الموقع",
+    "viewDetails": "عرض التفاصيل"
+  },
+  "language": {
+    "switch": "تغيير اللغة",
+    "english": "الإنجليزية",
+    "arabic": "العربية"
+  }
+}
+
