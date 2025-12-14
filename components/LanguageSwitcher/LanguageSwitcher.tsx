@@ -7,7 +7,12 @@ export default function LanguageSwitcher() {
   const { t } = useTranslation('common');
 
   const switchLanguage = (locale: string) => {
-    router.push(router.pathname, router.asPath, { locale });
+    // Get the current path
+    const currentPath = router.asPath;
+    
+    // Navigate to the same path with new locale
+    // This will trigger getServerSideProps with the new locale
+    router.push(currentPath, currentPath, { locale });
   };
 
   const currentLocale = router.locale || 'en';

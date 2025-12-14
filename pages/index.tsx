@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import { Ad, Category } from '@/types';
 import { fetchAds } from '@/lib/api/ads';
@@ -19,6 +20,8 @@ interface HomeProps {
 }
 
 export default function Home({ initialAds, categories }: HomeProps) {
+  const { t } = useTranslation('common');
+  
   // Group ads by category in the order they appear on OLX
   const categoryOrder = [
     'Cars for Sale',
@@ -44,8 +47,8 @@ export default function Home({ initialAds, categories }: HomeProps) {
   return (
     <>
       <Head>
-        <title>OLX Lebanon - Buy and Sell Anything</title>
-        <meta name="description" content="Buy and sell anything in Lebanon - Cars, Properties, Mobile Phones, Electronics and more" />
+        <title>{t('home.metaTitle')}</title>
+        <meta name="description" content={t('home.metaDescription')} />
       </Head>
       <div className={styles.container}>
         <Header />

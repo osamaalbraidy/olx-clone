@@ -31,15 +31,15 @@ export default function AdCard({ ad, onClick }: AdCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className={styles.placeholderImage}>No Image</div>
+          <div className={styles.placeholderImage}>{t('adCard.noImage')}</div>
         )}
-        {ad.featured && <span className={styles.featuredBadge}>Featured</span>}
+        {ad.featured && <span className={styles.featuredBadge}>{t('adCard.featured')}</span>}
       </div>
       <div className={styles.content}>
         <div className={styles.priceRow}>
           <div className={styles.price}>{formattedPrice}</div>
           {ad.metadata?.negotiable && (
-            <span className={styles.negotiable}>Negotiable</span>
+            <span className={styles.negotiable}>{t('adCard.negotiable')}</span>
           )}
         </div>
         <h3 className={styles.title}>{ad.title}</h3>
@@ -80,7 +80,7 @@ export default function AdCard({ ad, onClick }: AdCardProps) {
             <span className={styles.location}>{ad.location}</span>
           )}
           {ad.datePosted && (
-            <span className={styles.date}>{formatDate(ad.datePosted)}</span>
+            <span className={styles.date}>{formatDate(ad.datePosted, t)}</span>
           )}
         </div>
       </div>
@@ -88,24 +88,24 @@ export default function AdCard({ ad, onClick }: AdCardProps) {
   );
 }
 
-function formatDate(dateString: string): string {
+function formatDate(dateString: string, t: (key: string, options?: { count?: number }) => string): string {
   const date = new Date(dateString);
   const now = new Date();
   const diffTime = Math.abs(now.getTime() - date.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 0) return 'Today';
-  if (diffDays === 1) return '1 day ago';
-  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays === 0) return t('date.today');
+  if (diffDays === 1) return t('date.dayAgo', { count: 1 });
+  if (diffDays < 7) return t('date.daysAgo', { count: diffDays });
   if (diffDays < 30) {
     const weeks = Math.floor(diffDays / 7);
-    return weeks === 1 ? '1 week ago' : `${weeks} weeks ago`;
+    return weeks === 1 ? t('date.weekAgo', { count: 1 }) : t('date.weeksAgo', { count: weeks });
   }
   if (diffDays < 365) {
     const months = Math.floor(diffDays / 30);
-    return months === 1 ? '1 month ago' : `${months} months ago`;
+    return months === 1 ? t('date.monthAgo', { count: 1 }) : t('date.monthsAgo', { count: months });
   }
   const years = Math.floor(diffDays / 365);
-  return years === 1 ? '1 year ago' : `${years} years ago`;
+  return years === 1 ? t('date.yearAgo', { count: 1 }) : t('date.yearsAgo', { count: years });
 }
 

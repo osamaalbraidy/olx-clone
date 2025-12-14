@@ -8,13 +8,61 @@
     "subtitle": "Buy and Sell Anything",
     "loading": "Loading ads...",
     "error": "Failed to load ads. Please try again later.",
-    "noAds": "No ads found."
+    "noAds": "No ads found.",
+    "metaTitle": "OLX Lebanon - Buy and Sell Anything",
+    "metaDescription": "Buy and sell anything in Lebanon - Cars, Properties, Mobile Phones, Electronics and more"
+  },
+  "header": {
+    "location": "Lebanon",
+    "searchPlaceholder": "Find Cars, Mobile Phones and more...",
+    "login": "Login",
+    "sell": "Sell"
+  },
+  "navbar": {
+    "allCategories": "All categories",
+    "popularCategories": {
+      "carsForSale": "Cars for Sale",
+      "apartmentsForRent": "Apartments & Villas For Rent",
+      "mobilePhones": "Mobile Phones",
+      "laptops": "Laptops, Tablets, Computers",
+      "vacationRentals": "Vacation Rentals & Weekend Getaways",
+      "motorcycles": "Motorcycles & ATVs",
+      "homeDecoration": "Home Decoration & Accessories",
+      "jobsAvailable": "Jobs Available"
+    }
+  },
+  "footer": {
+    "popularCategories": "Popular Categories",
+    "trendingSearches": "Trending Searches",
+    "aboutUs": "About Us",
+    "olx": "OLX",
+    "followUs": "Follow us",
+    "copyright": "Classifieds in Lebanon.© 2006 – 2025 OLX",
+    "links": {
+      "cars": "Cars",
+      "flatsForRent": "Flats for rent",
+      "mobilePhones": "Mobile Phones",
+      "jobs": "Jobs",
+      "bikes": "Bikes",
+      "watches": "Watches",
+      "books": "Books",
+      "dogs": "Dogs",
+      "contactUs": "Contact Us",
+      "olxForBusinesses": "OLX for Businesses",
+      "help": "Help",
+      "sitemap": "Sitemap",
+      "termsOfUse": "Terms of use",
+      "privacyPolicy": "Privacy Policy"
+    }
   },
   "postAd": {
     "title": "Post your ad",
+    "sellYourAd": "Sell your ad",
     "chooseCategory": "Choose a category",
     "category": "Category",
-    "uploadImages": "Upload images",
+    "change": "Change",
+    "uploadImages": "Upload Images",
+    "loadingFields": "Loading fields...",
     "coverImageRecommendation": "For the cover picture we recommend using the landscape mode.",
     "addVideo": "Add a video",
     "enterYoutubeUrl": "Enter Youtube video URL",
@@ -22,21 +70,94 @@
     "select": "Select",
     "enter": "Enter",
     "submit": "Submit",
+    "postNow": "Post Now",
     "cancel": "Cancel",
     "next": "Next",
     "previous": "Previous",
+    "price": "Price",
+    "optionalPrice": "Optional price",
+    "enterPrice": "Enter Price",
+    "enterOptionalPrice": "Enter Optional price",
+    "negotiable": "Negotiable",
+    "exchange": "Exchange",
+    "free": "Free",
+    "delivery": "DELIVERY",
+    "deliveryText": "Deliver your items using Pik&Drop - Dubizzle Lebanon's exclusive delivery partner or through",
+    "selfDelivery": "Self-Delivery",
+    "name": "Name",
+    "mobilePhoneNumber": "Mobile Phone Number",
+    "contactMethod": "Contact Method",
+    "contactOptions": {
+      "phoneNumber": "Phone Number",
+      "olxChat": "OLX Chat",
+      "both": "Both"
+    },
+    "needHelp": {
+      "title": "Need help getting started?",
+      "text": "Review these resource to learn how to create a great ad and increase your selling chances",
+      "tip1": "Tips for improving your ads and your chances of selling",
+      "tip2": "All you need to know about Posting Ads",
+      "footer": "You can always come back to change your ad"
+    },
     "formErrors": {
       "required": "This field is required",
       "invalidEmail": "Please enter a valid email address",
       "invalidNumber": "Please enter a valid number",
       "minLength": "Minimum length is {{min}} characters",
       "maxLength": "Maximum length is {{max}} characters"
+    },
+    "fieldPlaceholders": {
+      "enterTitle": "Enter title",
+      "describeItem": "Describe the item you're selling",
+      "enterField": "Enter {{field}}",
+      "selectField": "Select {{field}}"
+    },
+    "fieldHelpers": {
+      "titleHelper": "Mention the key features of your item (e.g. brand, model, age, type)",
+      "descriptionHelper": "Include condition, features and reason for selling"
     }
   },
   "adCard": {
     "price": "Price",
     "location": "Location",
-    "viewDetails": "View Details"
+    "viewDetails": "View Details",
+    "noImage": "No Image",
+    "featured": "Featured",
+    "negotiable": "Negotiable"
+  },
+  "allCategories": {
+    "title": "All categories",
+    "vehicles": "Vehicles",
+    "properties": "Properties",
+    "mobilesAccessories": "Mobiles & Accessories",
+    "electronicsAppliances": "Electronics & Appliances",
+    "furnitureDecor": "Furniture & Decor",
+    "businessesIndustrial": "Businesses & Industrial",
+    "pets": "Pets",
+    "kidsBabies": "Kids & Babies",
+    "sportsEquipment": "Sports & Equipment",
+    "hobbies": "Hobbies",
+    "jobs": "Jobs",
+    "fashionBeauty": "Fashion & Beauty",
+    "services": "Services"
+  },
+  "categoryAds": {
+    "viewMore": "View more"
+  },
+  "appPromotion": {
+    "title": "Find amazing deals on the go.",
+    "subtitle": "Download OLX app now!"
+  },
+  "date": {
+    "today": "Today",
+    "dayAgo": "{{count}} day ago",
+    "daysAgo": "{{count}} days ago",
+    "weekAgo": "{{count}} week ago",
+    "weeksAgo": "{{count}} weeks ago",
+    "monthAgo": "{{count}} month ago",
+    "monthsAgo": "{{count}} months ago",
+    "yearAgo": "{{count}} year ago",
+    "yearsAgo": "{{count}} years ago"
   },
   "language": {
     "switch": "Switch Language",

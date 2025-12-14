@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 import styles from './AppPromotion.module.css';
 
 export default function AppPromotion() {
+  const { t } = useTranslation('common');
+  
   return (
     <div className={styles.appPromotion}>
       <div className={styles.appPromotionContent}>
         <div className={styles.appPromotionText}>
-          <div className={styles.appPromotionTitle}>Find amazing deals on the go.</div>
-          <div className={styles.appPromotionSubtitle}>Download OLX app now!</div>
+          <div className={styles.appPromotionTitle}>{t('appPromotion.title')}</div>
+          <div className={styles.appPromotionSubtitle}>{t('appPromotion.subtitle')}</div>
         </div>
         <div className={styles.appPromotionImage}>
           <Image

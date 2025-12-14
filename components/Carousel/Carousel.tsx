@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -6,6 +7,9 @@ import 'swiper/css/pagination';
 import styles from './Carousel.module.css';
 
 export default function Carousel() {
+  const router = useRouter();
+  const isRTL = router.locale === 'ar';
+
   return (
     <div className={styles.carouselSection}>
       <Swiper
@@ -20,6 +24,7 @@ export default function Carousel() {
           clickable: true,
         }}
         loop={true}
+        dir={isRTL ? 'rtl' : 'ltr'}
         className={styles.carousel}
       >
         <SwiperSlide>

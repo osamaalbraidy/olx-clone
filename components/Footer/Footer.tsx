@@ -1,48 +1,51 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { useTranslation } from 'next-i18next';
 import styles from './Footer.module.css';
 
 export default function Footer() {
+  const { t } = useTranslation('common');
+  
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
         <section className={styles.footerSection}>
-          <h4 className={styles.footerSectionTitle}>Popular Categories</h4>
+          <h4 className={styles.footerSectionTitle}>{t('footer.popularCategories')}</h4>
           <ul className={styles.footerList}>
-            <li><Link href="/">Cars</Link></li>
-            <li><Link href="/">Flats for rent</Link></li>
-            <li><Link href="/">Mobile Phones</Link></li>
-            <li><Link href="/">Jobs</Link></li>
+            <li><Link href="/">{t('footer.links.cars')}</Link></li>
+            <li><Link href="/">{t('footer.links.flatsForRent')}</Link></li>
+            <li><Link href="/">{t('footer.links.mobilePhones')}</Link></li>
+            <li><Link href="/">{t('footer.links.jobs')}</Link></li>
           </ul>
         </section>
         <section className={styles.footerSection}>
-          <h4 className={styles.footerSectionTitle}>Trending Searches</h4>
+          <h4 className={styles.footerSectionTitle}>{t('footer.trendingSearches')}</h4>
           <ul className={styles.footerList}>
-            <li><Link href="/">Bikes</Link></li>
-            <li><Link href="/">Watches</Link></li>
-            <li><Link href="/">Books</Link></li>
-            <li><Link href="/">Dogs</Link></li>
+            <li><Link href="/">{t('footer.links.bikes')}</Link></li>
+            <li><Link href="/">{t('footer.links.watches')}</Link></li>
+            <li><Link href="/">{t('footer.links.books')}</Link></li>
+            <li><Link href="/">{t('footer.links.dogs')}</Link></li>
           </ul>
         </section>
         <section className={styles.footerSection}>
-          <h4 className={styles.footerSectionTitle}>About Us</h4>
+          <h4 className={styles.footerSectionTitle}>{t('footer.aboutUs')}</h4>
           <ul className={styles.footerList}>
-            <li><Link href="/">Contact Us</Link></li>
-            <li><Link href="/">OLX for Businesses</Link></li>
+            <li><Link href="/">{t('footer.links.contactUs')}</Link></li>
+            <li><Link href="/">{t('footer.links.olxForBusinesses')}</Link></li>
           </ul>
         </section>
         <section className={styles.footerSection}>
-          <h4 className={styles.footerSectionTitle}>OLX</h4>
+          <h4 className={styles.footerSectionTitle}>{t('footer.olx')}</h4>
           <ul className={styles.footerList}>
-            <li><Link href="/">Help</Link></li>
-            <li><Link href="/">Sitemap</Link></li>
-            <li><Link href="/">Terms of use</Link></li>
-            <li><Link href="/">Privacy Policy</Link></li>
+            <li><Link href="/">{t('footer.links.help')}</Link></li>
+            <li><Link href="/">{t('footer.links.sitemap')}</Link></li>
+            <li><Link href="/">{t('footer.links.termsOfUse')}</Link></li>
+            <li><Link href="/">{t('footer.links.privacyPolicy')}</Link></li>
           </ul>
         </section>
         <section className={styles.footerSection}>
-          <h4 className={styles.footerSectionTitle}>Follow us</h4>
+          <h4 className={styles.footerSectionTitle}>{t('footer.followUs')}</h4>
           <div className={styles.socialIcons}>
             <Link href="/" className={styles.socialIcon} aria-label="Facebook">
               <FaFacebook />
@@ -83,7 +86,7 @@ export default function Footer() {
         </section>
       </div>
       <div className={styles.footerBottom}>
-        <p>Classifieds in Lebanon.© 2006 – 2025 OLX</p>
+        <p>{t('footer.copyright')}</p>
       </div>
     </footer>
   );

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { FaChevronDown } from 'react-icons/fa';
+import { useTranslation } from 'next-i18next';
 import { Category } from '@/types';
 import styles from './Navbar.module.css';
 
@@ -9,6 +10,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ categories }: NavbarProps) {
+  const { t } = useTranslation('common');
   const [showCategoriesDropdown, setShowCategoriesDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -35,14 +37,14 @@ export default function Navbar({ categories }: NavbarProps) {
 
   // Popular category links (matching OLX website)
   const popularCategories = [
-    { name: 'Cars for Sale', slug: 'cars-for-sale', path: '/vehicles/cars-for-sale/' },
-    { name: 'Apartments & Villas For Rent', slug: 'apartments-villas-for-rent', path: '/properties/apartments-villas-for-rent/' },
-    { name: 'Mobile Phones', slug: 'mobile-phones', path: '/mobile-phones-accessories/mobile-phones/' },
-    { name: 'Laptops, Tablets, Computers', slug: 'laptops-tablets-computers', path: '/electronics-home-appliances/laptops-tablets-computers/' },
-    { name: 'Vacation Rentals & Weekend Getaways', slug: 'vacation-rentals-and-weekend-getaways', path: '/properties/vacation-rentals-and-weekend-getaways/' },
-    { name: 'Motorcycles & ATVs', slug: 'motorcycles-atv', path: '/vehicles/motorcycles-atv/' },
-    { name: 'Home Decoration & Accessories', slug: 'home-decoration-accessories', path: '/home-furniture-decor/home-decoration-accessories/' },
-    { name: 'Jobs Available', slug: 'jobs-available', path: '/jobs/jobs-available/' },
+    { name: t('navbar.popularCategories.carsForSale'), slug: 'cars-for-sale', path: '/vehicles/cars-for-sale/' },
+    { name: t('navbar.popularCategories.apartmentsForRent'), slug: 'apartments-villas-for-rent', path: '/properties/apartments-villas-for-rent/' },
+    { name: t('navbar.popularCategories.mobilePhones'), slug: 'mobile-phones', path: '/mobile-phones-accessories/mobile-phones/' },
+    { name: t('navbar.popularCategories.laptops'), slug: 'laptops-tablets-computers', path: '/electronics-home-appliances/laptops-tablets-computers/' },
+    { name: t('navbar.popularCategories.vacationRentals'), slug: 'vacation-rentals-and-weekend-getaways', path: '/properties/vacation-rentals-and-weekend-getaways/' },
+    { name: t('navbar.popularCategories.motorcycles'), slug: 'motorcycles-atv', path: '/vehicles/motorcycles-atv/' },
+    { name: t('navbar.popularCategories.homeDecoration'), slug: 'home-decoration-accessories', path: '/home-furniture-decor/home-decoration-accessories/' },
+    { name: t('navbar.popularCategories.jobsAvailable'), slug: 'jobs-available', path: '/jobs/jobs-available/' },
   ];
 
   return (
@@ -53,7 +55,7 @@ export default function Navbar({ categories }: NavbarProps) {
             className={styles.allCategoriesButton}
             onClick={() => setShowCategoriesDropdown(!showCategoriesDropdown)}
           >
-            All categories
+            {t('navbar.allCategories')}
             <FaChevronDown className={styles.dropdownArrow} />
           </button>
           {showCategoriesDropdown && (

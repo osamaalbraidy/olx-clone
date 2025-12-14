@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
 import { CategoryField, CategoryFieldChoice, Category } from '@/types';
 import styles from './Field.module.css';
 import { FaSearch, FaCamera, FaPlus } from 'react-icons/fa';
@@ -11,6 +13,7 @@ export interface CustomField {
   // For category
   category?: Category;
   categoryPath?: Category[];
+  categoryIconUrl?: string | null;
   onCategoryChange?: () => void;
   // For price
   currency?: string;
@@ -34,6 +37,7 @@ interface FieldProps {
 }
 
 export default function Field({ field, value, onChange, error, customField }: FieldProps) {
+  const { t } = useTranslation('common');
   const fieldValue = value ?? '';
 
   // Handle custom fields (image upload, price, phone, toggle, etc.)
@@ -49,7 +53,20 @@ export default function Field({ field, value, onChange, error, customField }: Fi
             {customField.isMandatory && <span className={styles.required}>*</span>}
           </label>
           <div className={styles.categoryDisplay}>
-            <div className={styles.categoryIcon}></div>
+            <div 
+              className={styles.categoryIcon}
+              style={customField.categoryIconUrl ? { background: 'transparent' } : undefined}
+            >
+              {customField.categoryIconUrl ? (
+                <Image
+                  src={customField.categoryIconUrl}
+                  alt={categoryName || subName}
+                  width={48}
+                  height={48}
+                  className={styles.categoryIconImage}
+                />
+              ) : null}
+            </div>
             <div className={styles.categoryInfo}>
               <div className={styles.categoryName}>{categoryName}</div>
               <div className={styles.categorySubName}>{subName}</div>
@@ -60,7 +77,7 @@ export default function Field({ field, value, onChange, error, customField }: Fi
                 className={styles.changeButton}
                 onClick={customField.onCategoryChange}
               >
-                Change
+                {t('postAd.change')}
               </button>
             )}
           </div>
@@ -350,7 +367,7 @@ export default function Field({ field, value, onChange, error, customField }: Fi
             onChange={(e) => onChange(e.target.value)}
             required={field.isMandatory}
           >
-            <option value="">Select {field.name.toLowerCase()}</option>
+            <option value="">{t('postAd.fieldPlaceholders.selectField', { field: field.name.toLowerCase() })}</option>
             {field.choices
               .filter((choice) => !choice.parentID)
               .map((choice) => (
@@ -414,8 +431,8 @@ export default function Field({ field, value, onChange, error, customField }: Fi
                 className={`${styles.input} ${styles.textarea} ${error ? styles.error : ''}`}
                 placeholder={
                   field.attribute === 'description'
-                    ? "Describe the item you're selling"
-                    : `Enter ${field.name.toLowerCase()}`
+                    ? t('postAd.fieldPlaceholders.describeItem')
+                    : t('postAd.fieldPlaceholders.enterField', { field: field.name.toLowerCase() })
                 }
                 value={fieldValue as string}
                 onChange={(e) => onChange(e.target.value)}
@@ -431,7 +448,7 @@ export default function Field({ field, value, onChange, error, customField }: Fi
               )}
               {field.attribute === 'description' && (
                 <div className={styles.helperText}>
-                  Include condition, features and reason for selling
+                  {t('postAd.fieldHelpers.descriptionHelper')}
                 </div>
               )}
             </>
@@ -442,8 +459,8 @@ export default function Field({ field, value, onChange, error, customField }: Fi
                 className={`${styles.input} ${error ? styles.error : ''}`}
                 placeholder={
                   field.attribute === 'title'
-                    ? 'Enter title'
-                    : `Enter ${field.name.toLowerCase()}`
+                    ? t('postAd.fieldPlaceholders.enterTitle')
+                    : t('postAd.fieldPlaceholders.enterField', { field: field.name.toLowerCase() })
                 }
                 value={fieldValue as string}
                 onChange={(e) => onChange(e.target.value)}
@@ -458,7 +475,7 @@ export default function Field({ field, value, onChange, error, customField }: Fi
               )}
               {field.attribute === 'title' && (
                 <div className={styles.helperText}>
-                  Mention the key features of your item (e.g. brand, model, age, type)
+                  {t('postAd.fieldHelpers.titleHelper')}
                 </div>
               )}
             </>

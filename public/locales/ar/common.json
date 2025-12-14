@@ -8,13 +8,61 @@
     "subtitle": "اشتري وبيع أي شيء",
     "loading": "جاري تحميل الإعلانات...",
     "error": "فشل تحميل الإعلانات. يرجى المحاولة مرة أخرى لاحقاً.",
-    "noAds": "لم يتم العثور على إعلانات."
+    "noAds": "لم يتم العثور على إعلانات.",
+    "metaTitle": "أولكس لبنان - اشتري وبيع أي شيء",
+    "metaDescription": "اشتري وبيع أي شيء في لبنان - سيارات، عقارات، هواتف محمولة، إلكترونيات والمزيد"
+  },
+  "header": {
+    "location": "لبنان",
+    "searchPlaceholder": "ابحث عن سيارات، هواتف محمولة والمزيد...",
+    "login": "تسجيل الدخول",
+    "sell": "بيع"
+  },
+  "navbar": {
+    "allCategories": "جميع الفئات",
+    "popularCategories": {
+      "carsForSale": "سيارات للبيع",
+      "apartmentsForRent": "شقق وفيلات للإيجار",
+      "mobilePhones": "هواتف محمولة",
+      "laptops": "أجهزة كمبيوتر محمولة، أجهزة لوحية، أجهزة كمبيوتر",
+      "vacationRentals": "إيجار عطلات ومنازل عطلة نهاية الأسبوع",
+      "motorcycles": "دراجات نارية و ATV",
+      "homeDecoration": "ديكور المنزل والإكسسوارات",
+      "jobsAvailable": "وظائف متاحة"
+    }
+  },
+  "footer": {
+    "popularCategories": "الفئات الشائعة",
+    "trendingSearches": "عمليات البحث الرائجة",
+    "aboutUs": "من نحن",
+    "olx": "أولكس",
+    "followUs": "تابعنا",
+    "copyright": "إعلانات مبوبة في لبنان.© 2006 – 2025 أولكس",
+    "links": {
+      "cars": "سيارات",
+      "flatsForRent": "شقق للإيجار",
+      "mobilePhones": "هواتف محمولة",
+      "jobs": "وظائف",
+      "bikes": "دراجات",
+      "watches": "ساعات",
+      "books": "كتب",
+      "dogs": "كلاب",
+      "contactUs": "اتصل بنا",
+      "olxForBusinesses": "أولكس للشركات",
+      "help": "مساعدة",
+      "sitemap": "خريطة الموقع",
+      "termsOfUse": "شروط الاستخدام",
+      "privacyPolicy": "سياسة الخصوصية"
+    }
   },
   "postAd": {
     "title": "انشر إعلانك",
+    "sellYourAd": "بيع إعلانك",
     "chooseCategory": "اختر فئة",
     "category": "الفئة",
+    "change": "تغيير",
     "uploadImages": "رفع الصور",
+    "loadingFields": "جاري تحميل الحقول...",
     "coverImageRecommendation": "لصورة الغلاف ننصح باستخدام الوضع الأفقي.",
     "addVideo": "أضف فيديو",
     "enterYoutubeUrl": "أدخل رابط فيديو يوتيوب",
@@ -22,21 +70,94 @@
     "select": "اختر",
     "enter": "أدخل",
     "submit": "إرسال",
+    "postNow": "نشر الآن",
     "cancel": "إلغاء",
     "next": "التالي",
     "previous": "السابق",
+    "price": "السعر",
+    "optionalPrice": "سعر اختياري",
+    "enterPrice": "أدخل السعر",
+    "enterOptionalPrice": "أدخل السعر الاختياري",
+    "negotiable": "قابل للتفاوض",
+    "exchange": "مقايضة",
+    "free": "مجاناً",
+    "delivery": "التسليم",
+    "deliveryText": "قم بتسليم عناصرك باستخدام Pik&Drop - شريك التسليم الحصري لـ Dubizzle Lebanon أو من خلال",
+    "selfDelivery": "التسليم الذاتي",
+    "name": "الاسم",
+    "mobilePhoneNumber": "رقم الهاتف المحمول",
+    "contactMethod": "طريقة الاتصال",
+    "contactOptions": {
+      "phoneNumber": "رقم الهاتف",
+      "olxChat": "محادثة أولكس",
+      "both": "كلاهما"
+    },
+    "needHelp": {
+      "title": "تحتاج مساعدة للبدء؟",
+      "text": "راجع هذه الموارد لمعرفة كيفية إنشاء إعلان رائع وزيادة فرصك في البيع",
+      "tip1": "نصائح لتحسين إعلاناتك وفرصك في البيع",
+      "tip2": "كل ما تحتاج معرفته حول نشر الإعلانات",
+      "footer": "يمكنك دائماً العودة لتغيير إعلانك"
+    },
     "formErrors": {
       "required": "هذا الحقل مطلوب",
       "invalidEmail": "يرجى إدخال عنوان بريد إلكتروني صحيح",
       "invalidNumber": "يرجى إدخال رقم صحيح",
       "minLength": "الحد الأدنى للطول هو {{min}} أحرف",
       "maxLength": "الحد الأقصى للطول هو {{max}} أحرف"
+    },
+    "fieldPlaceholders": {
+      "enterTitle": "أدخل العنوان",
+      "describeItem": "اوصف العنصر الذي تبيعه",
+      "enterField": "أدخل {{field}}",
+      "selectField": "اختر {{field}}"
+    },
+    "fieldHelpers": {
+      "titleHelper": "اذكر الميزات الرئيسية لعنصرك (مثل العلامة التجارية، الطراز، العمر، النوع)",
+      "descriptionHelper": "قم بتضمين الحالة والميزات وسبب البيع"
     }
   },
   "adCard": {
     "price": "السعر",
     "location": "الموقع",
-    "viewDetails": "عرض التفاصيل"
+    "viewDetails": "عرض التفاصيل",
+    "noImage": "لا توجد صورة",
+    "featured": "مميز",
+    "negotiable": "قابل للتفاوض"
+  },
+  "allCategories": {
+    "title": "جميع الفئات",
+    "vehicles": "المركبات",
+    "properties": "العقارات",
+    "mobilesAccessories": "الهواتف المحمولة والإكسسوارات",
+    "electronicsAppliances": "الإلكترونيات والأجهزة",
+    "furnitureDecor": "الأثاث والديكور",
+    "businessesIndustrial": "الأعمال والصناعة",
+    "pets": "الحيوانات الأليفة",
+    "kidsBabies": "الأطفال والرضع",
+    "sportsEquipment": "المعدات الرياضية",
+    "hobbies": "الهوايات",
+    "jobs": "الوظائف",
+    "fashionBeauty": "الموضة والجمال",
+    "services": "الخدمات"
+  },
+  "categoryAds": {
+    "viewMore": "عرض المزيد"
+  },
+  "appPromotion": {
+    "title": "ابحث عن صفقات رائعة أثناء التنقل.",
+    "subtitle": "حمّل تطبيق أولكس الآن!"
+  },
+  "date": {
+    "today": "اليوم",
+    "dayAgo": "منذ {{count}} يوم",
+    "daysAgo": "منذ {{count}} أيام",
+    "weekAgo": "منذ {{count}} أسبوع",
+    "weeksAgo": "منذ {{count}} أسابيع",
+    "monthAgo": "منذ {{count}} شهر",
+    "monthsAgo": "منذ {{count}} أشهر",
+    "yearAgo": "منذ {{count}} سنة",
+    "yearsAgo": "منذ {{count}} سنوات"
   },
   "language": {
     "switch": "تغيير اللغة",
