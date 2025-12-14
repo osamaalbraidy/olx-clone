@@ -28,8 +28,8 @@ export interface CustomField {
 interface FieldProps {
   field?: CategoryField;
   customField?: CustomField;
-  value: string | number | boolean | string[] | null;
-  onChange: (value: string | number | boolean | string[]) => void;
+  value: string | number | boolean | string[] | Record<string, boolean> | null;
+  onChange: (value: string | number | boolean | string[] | Record<string, boolean>) => void;
   error?: string;
 }
 
@@ -200,9 +200,9 @@ export default function Field({ field, value, onChange, error, customField }: Fi
               <label key={option.value} className={styles.checkboxLabel}>
                 <input
                   type="checkbox"
-                  checked={(fieldValue as Record<string, boolean>)?.[option.value] || false}
+                  checked={(fieldValue as unknown as Record<string, boolean>)?.[option.value] || false}
                   onChange={(e) => {
-                    const current = (fieldValue as Record<string, boolean>) || {};
+                    const current = (fieldValue as unknown as Record<string, boolean>) || {};
                     onChange({
                       ...current,
                       [option.value]: e.target.checked,

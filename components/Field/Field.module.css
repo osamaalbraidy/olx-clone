@@ -6,7 +6,7 @@
 }
 
 .label {
-  font-weight: 600;
+  font-weight: 700;
   color: #333;
   width: 30%;
   padding-top: 0.75rem;
@@ -153,7 +153,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: #f8f9fa;
+  /* background: #f8f9fa; */
   border-radius: 4px;
   flex: 1;
 }
@@ -186,12 +186,13 @@
 }
 
 .changeButton {
-  color: #002f34;
+  color: #57b9df;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  text-decoration: underline;
+  font-weight: 700;
+  /* text-decoration: underline; */
   padding: 0;
 }
 
@@ -202,14 +203,14 @@
 /* Image Upload */
 .imageGrid {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 0.75rem;
   flex: 1;
 }
 
 .imageUploadButton {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 1.28;
   border: 2px dashed #002f34;
   border-radius: 4px;
   display: flex;
@@ -226,14 +227,16 @@
 }
 
 .plusIcon {
-  font-size: 2rem;
+  font-size: 1rem;
   color: #002f34;
 }
 
 .imageSlot {
   width: 100%;
-  aspect-ratio: 1;
-  border: 1px solid #ddd;
+  aspect-ratio: 1.28;
+  border: 1px solid #ddd;    
+  /* height: 5.6rem; */
+  /* width: 7.2rem; */
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -244,7 +247,7 @@
 }
 
 .cameraIcon {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #999;
 }
 

@@ -128,7 +128,7 @@ export default function Attributes({ initialCategories }: AttributesProps) {
     loadFields();
   }, [categoryId, initialCategories, findCategoryById]);
 
-  const handleFieldChange = (attribute: string, value: string | number | boolean | string[]) => {
+  const handleFieldChange = (attribute: string, value: string | number | boolean | string[] | Record<string, boolean>) => {
     setFormData((prev) => ({
       ...prev,
       [attribute]: value,

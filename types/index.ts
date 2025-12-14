@@ -104,7 +104,7 @@ export interface Ad {
 
 // Form field types for dynamic form rendering
 export interface FormFieldValue {
-    [key: string]: string | number | boolean | string[] | null;
+    [key: string]: string | number | boolean | string[] | Record<string, boolean> | null;
 }
 
 export interface FormFieldError {

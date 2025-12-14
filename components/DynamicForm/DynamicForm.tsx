@@ -76,7 +76,7 @@ export default function DynamicForm({
 
   const handleFieldChange = (
     fieldName: string,
-    value: string | number | boolean
+    value: string | number | boolean | string[] | Record<string, boolean>
   ) => {
     onFormDataChange({
       ...formData,
