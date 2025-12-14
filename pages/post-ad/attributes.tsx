@@ -11,7 +11,7 @@ import Logo from '@/components/Logo/Logo';
 import Field from '@/components/Field/Field';
 import styles from '@/styles/PostAd.module.css';
 import attributesStyles from './attributes.module.css';
-import { FaArrowLeft, FaCamera, FaPlus } from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
 
 interface AttributesProps {
   initialCategories: Category[];
@@ -96,11 +96,25 @@ export default function Attributes({ initialCategories }: AttributesProps) {
         });
 
         // Extract fields from the response
-        const categoryKey = categoryId.toString();
-        const categoryFields = data[categoryKey]?.flatFields || [];
+        // The API can return either common_category_fields or category-specific fields
+        let categoryFields: CategoryField[] = [];
+        
+        if (data.common_category_fields?.flatFields) {
+          // Response has common_category_fields structure
+          categoryFields = data.common_category_fields.flatFields;
+        } else {
+          // Try to get category-specific fields
+          const categoryKey = categoryId.toString();
+          categoryFields = data[categoryKey]?.flatFields || [];
+        }
+        
+        // Filter out fields that should be excluded from post an ad form
+        const filteredFields = categoryFields.filter((field) => 
+          !field.roles?.includes('exclude_from_post_an_ad')
+        );
         
         // Sort fields by displayPriority
-        const sortedFields = categoryFields.sort((a, b) => 
+        const sortedFields = filteredFields.sort((a, b) => 
           (a.displayPriority || 0) - (b.displayPriority || 0)
         );
         setFields(sortedFields);
@@ -112,7 +126,7 @@ export default function Attributes({ initialCategories }: AttributesProps) {
     };
 
     loadFields();
-  }, [categoryId, initialCategories]);
+  }, [categoryId, initialCategories, findCategoryById]);
 
   const handleFieldChange = (attribute: string, value: string | number | boolean | string[]) => {
     setFormData((prev) => ({
@@ -121,12 +135,6 @@ export default function Attributes({ initialCategories }: AttributesProps) {
     }));
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const newImages = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
-      setImages((prev) => [...prev, ...newImages].slice(0, 15));
-    }
-  };
 
   return (
     <>
@@ -157,64 +165,30 @@ export default function Attributes({ initialCategories }: AttributesProps) {
                 <div className={attributesStyles.form}>
                   {/* Category Section */}
                   {selectedCategory && categoryPath.length > 0 && (
-                    <div className={attributesStyles.section}>
-                      <label className={attributesStyles.sectionLabel}>Category</label>
-                      <div className={attributesStyles.categoryDisplay}>
-                        <div className={attributesStyles.categoryIcon}>
-                          {/* You can add category icon here */}
-                        </div>
-                        <div className={attributesStyles.categoryInfo}>
-                          <div className={attributesStyles.categoryName}>
-                            {categoryPath[categoryPath.length - 2]?.name || categoryPath[0]?.name}
-                          </div>
-                          <div className={attributesStyles.categorySubName}>
-                            {selectedCategory.name}
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          className={attributesStyles.changeButton}
-                          onClick={() => router.push('/post-ad')}
-                        >
-                          Change
-                        </button>
-                      </div>
-                    </div>
+                    <Field
+                      customField={{
+                        type: 'category',
+                        attribute: 'category',
+                        name: 'Category',
+                        category: selectedCategory,
+                        categoryPath: categoryPath,
+                        onCategoryChange: () => router.push('/post-ad'),
+                      }}
+                      value={null}
+                      onChange={() => {}}
+                    />
                   )}
 
                   {/* Upload Images Section */}
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>Upload Images</label>
-                    <div className={attributesStyles.imageGrid}>
-                      <label className={attributesStyles.imageUploadButton}>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          onChange={handleImageUpload}
-                          style={{ display: 'none' }}
-                        />
-                        <FaPlus className={attributesStyles.plusIcon} />
-                      </label>
-                      {Array.from({ length: 14 }).map((_, index) => (
-                        <div key={index} className={attributesStyles.imageSlot}>
-                          {images[index] ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
-                              src={images[index]}
-                              alt={`Upload ${index + 1}`}
-                              className={attributesStyles.uploadedImage}
-                            />
-                          ) : (
-                            <FaCamera className={attributesStyles.cameraIcon} />
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                    <div className={attributesStyles.imageHint}>
-                      For the cover picture we recommend using the landscape mode.
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'images',
+                      attribute: 'images',
+                      name: 'Upload Images',
+                    }}
+                    value={images}
+                    onChange={(value) => setImages(value as string[])}
+                  />
 
                   {/* Dynamic Fields from API */}
                   {fields.map((field) => {
@@ -260,135 +234,111 @@ export default function Attributes({ initialCategories }: AttributesProps) {
                   )}
 
                   {/* Price Section */}
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>
-                      Price<span className={attributesStyles.required}>*</span>
-                    </label>
-                    <div className={attributesStyles.priceInput}>
-                      <div className={attributesStyles.currency}>USD</div>
-                      <input
-                        type="number"
-                        className={attributesStyles.priceField}
-                        placeholder="Enter Price"
-                        value={formData.price as number || ''}
-                        onChange={(e) => handleFieldChange('price', parseFloat(e.target.value) || 0)}
-                      />
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'price',
+                      attribute: 'price',
+                      name: 'Price',
+                      isMandatory: true,
+                      currency: 'USD',
+                      placeholder: 'Enter Price',
+                    }}
+                    value={formData.price}
+                    onChange={(value) => handleFieldChange('price', value)}
+                  />
 
                   {/* Optional Price */}
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>Optional price</label>
-                    <div className={attributesStyles.priceInput}>
-                      <div className={attributesStyles.currency}>LBP</div>
-                      <input
-                        type="number"
-                        className={attributesStyles.priceField}
-                        placeholder="Enter Optional price"
-                        value={formData.optionalPrice as number || ''}
-                        onChange={(e) => handleFieldChange('optionalPrice', parseFloat(e.target.value) || 0)}
-                      />
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'optionalPrice',
+                      attribute: 'optionalPrice',
+                      name: 'Optional price',
+                      currency: 'LBP',
+                      placeholder: 'Enter Optional price',
+                    }}
+                    value={formData.optionalPrice}
+                    onChange={(value) => handleFieldChange('optionalPrice', value)}
+                  />
 
                   {/* Checkboxes: Negotiable, Exchange, Free */}
-                  <div className={attributesStyles.section}>
-                    <div className={attributesStyles.checkboxRow}>
-                      <label className={attributesStyles.checkboxLabel}>
-                        <input
-                          type="checkbox"
-                          checked={formData.negotiable as boolean || false}
-                          onChange={(e) => handleFieldChange('negotiable', e.target.checked)}
-                        />
-                        <span>Negotiable</span>
-                      </label>
-                      <label className={attributesStyles.checkboxLabel}>
-                        <input
-                          type="checkbox"
-                          checked={formData.exchange as boolean || false}
-                          onChange={(e) => handleFieldChange('exchange', e.target.checked)}
-                        />
-                        <span>Exchange</span>
-                      </label>
-                      <label className={attributesStyles.checkboxLabel}>
-                        <input
-                          type="checkbox"
-                          checked={formData.free as boolean || false}
-                          onChange={(e) => handleFieldChange('free', e.target.checked)}
-                        />
-                        <span>Free</span>
-                      </label>
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'checkboxes',
+                      attribute: 'priceOptions',
+                      name: '',
+                      checkboxOptions: [
+                        { value: 'negotiable', label: 'Negotiable' },
+                        { value: 'exchange', label: 'Exchange' },
+                        { value: 'free', label: 'Free' },
+                      ],
+                    }}
+                    value={[
+                      ...(formData.negotiable ? ['negotiable'] : []),
+                      ...(formData.exchange ? ['exchange'] : []),
+                      ...(formData.free ? ['free'] : []),
+                    ]}
+                    onChange={(value) => {
+                      // value is expected to be an array of selected option strings, e.g. ['negotiable', 'exchange']
+                      const selected = Array.isArray(value) ? value : [];
+                      handleFieldChange('negotiable', selected.includes('negotiable'));
+                      handleFieldChange('exchange', selected.includes('exchange'));
+                      handleFieldChange('free', selected.includes('free'));
+                    }}
+                  />
 
                   {/* Delivery Toggle */}
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>DELIVERY</label>
-                    <div className={attributesStyles.deliverySection}>
-                      <label className={attributesStyles.toggle}>
-                        <input
-                          type="checkbox"
-                          checked={formData.delivery as boolean || false}
-                          onChange={(e) => handleFieldChange('delivery', e.target.checked)}
-                        />
-                        <span className={attributesStyles.toggleSlider}></span>
-                      </label>
-                      <div className={attributesStyles.deliveryText}>
-                        Deliver your items using Pik&Drop - Dubizzle Lebanon&apos;s exclusive delivery partner or through{' '}
-                        <a href="#" className={attributesStyles.link}>Self-Delivery</a>
-                      </div>
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'delivery',
+                      attribute: 'delivery',
+                      name: 'DELIVERY',
+                      deliveryText: (
+                        <>
+                          Deliver your items using Pik&Drop - Dubizzle Lebanon&apos;s exclusive delivery partner or through{' '}
+                          <a href="#">Self-Delivery</a>
+                        </>
+                      ),
+                    }}
+                    value={formData.delivery}
+                    onChange={(value) => handleFieldChange('delivery', value)}
+                  />
 
                   {/* Contact Information */}
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>
-                      Name<span className={attributesStyles.required}>*</span>
-                    </label>
-                    <input
-                      type="text"
-                      className={attributesStyles.input}
-                      value={formData.name as string || ''}
-                      onChange={(e) => handleFieldChange('name', e.target.value)}
-                      required
-                    />
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'name',
+                      attribute: 'name',
+                      name: 'Name',
+                      isMandatory: true,
+                    }}
+                    value={formData.name}
+                    onChange={(value) => handleFieldChange('name', value)}
+                  />
 
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>
-                      Mobile Phone Number<span className={attributesStyles.required}>*</span>
-                    </label>
-                    <div className={attributesStyles.phoneInput}>
-                      <div className={attributesStyles.countryCode}>+961</div>
-                      <input
-                        type="tel"
-                        className={attributesStyles.phoneField}
-                        placeholder="78858135"
-                        value={formData.phone as string || ''}
-                        onChange={(e) => handleFieldChange('phone', e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'phone',
+                      attribute: 'phone',
+                      name: 'Mobile Phone Number',
+                      isMandatory: true,
+                      countryCode: '+961',
+                      placeholder: '78858135',
+                    }}
+                    value={formData.phone}
+                    onChange={(value) => handleFieldChange('phone', value)}
+                  />
 
                   {/* Contact Method */}
-                  <div className={attributesStyles.section}>
-                    <label className={attributesStyles.sectionLabel}>Contact Method</label>
-                    <div className={attributesStyles.pillGroup}>
-                      {['Phone Number', 'OLX Chat', 'Both'].map((method) => (
-                        <button
-                          key={method}
-                          type="button"
-                          className={`${attributesStyles.pill} ${
-                            formData.contactMethod === method ? attributesStyles.pillActive : ''
-                          }`}
-                          onClick={() => handleFieldChange('contactMethod', method)}
-                        >
-                          {method}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  <Field
+                    customField={{
+                      type: 'contactMethod',
+                      attribute: 'contactMethod',
+                      name: 'Contact Method',
+                      contactOptions: ['Phone Number', 'OLX Chat', 'Both'],
+                    }}
+                    value={formData.contactMethod}
+                    onChange={(value) => handleFieldChange('contactMethod', value)}
+                  />
                 </div>
               )}
             </div>

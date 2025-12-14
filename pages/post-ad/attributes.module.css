@@ -26,6 +26,9 @@
 
 .section {
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .sectionLabel {
@@ -34,6 +37,7 @@
   display: block;
   margin-bottom: 0.75rem;
   font-size: 14px;
+  width: 30%;
 }
 
 .required {

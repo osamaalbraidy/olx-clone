@@ -8,9 +8,10 @@
 .label {
   font-weight: 600;
   color: #333;
-  min-width: 150px;
+  width: 30%;
   padding-top: 0.75rem;
   flex-shrink: 0;
+  font-size: 14px;
 }
 
 .required {
@@ -143,7 +144,253 @@
   font-size: 12px;
   color: #d32f2f;
   margin-top: 0.25rem;
-  margin-left: 150px;
+  margin-left: 30%;
+}
+
+/* Category Display */
+.categoryDisplay {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.categoryIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffeb3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.categoryInfo {
+  flex: 1;
+}
+
+.categoryName {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+
+.categorySubName {
+  font-size: 12px;
+  color: #666;
+}
+
+.changeButton {
+  color: #002f34;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.changeButton:hover {
+  color: #004d56;
+}
+
+/* Image Upload */
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.imageUploadButton {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px dashed #002f34;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #f0f9fa;
+  transition: all 0.2s ease;
+}
+
+.imageUploadButton:hover {
+  background: #e0f4f6;
+  border-color: #004d56;
+}
+
+.plusIcon {
+  font-size: 2rem;
+  color: #002f34;
+}
+
+.imageSlot {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.cameraIcon {
+  font-size: 1.5rem;
+  color: #999;
+}
+
+.uploadedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Price Input */
+.priceInput {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.currency {
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.priceField {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.priceField:focus {
+  outline: none;
+}
+
+/* Phone Input */
+.phoneInput {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.countryCode {
+  padding: 0.75rem 1rem;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
+  color: #666;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.phoneField {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.phoneField:focus {
+  outline: none;
+}
+
+/* Checkbox Row */
+.checkboxRow {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Delivery Section */
+.deliverySection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .toggleSlider {
+  background-color: #002f34;
+}
+
+.toggle input:checked + .toggleSlider:before {
+  transform: translateX(26px);
+}
+
+.deliveryText {
+  font-size: 14px;
+  color: #666;
+  flex: 1;
+}
+
+.deliveryText a {
+  color: #002f34;
+  text-decoration: underline;
+}
+
+.deliveryText a:hover {
+  color: #004d56;
 }
 
 @media (max-width: 768px) {
@@ -153,12 +400,21 @@
   }
 
   .label {
-    min-width: auto;
+    width: auto;
     padding-top: 0;
   }
 
   .errorMessage {
     margin-left: 0;
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .checkboxRow {
+    flex-direction: column;
+    gap: 0.75rem;
   }
 }
 

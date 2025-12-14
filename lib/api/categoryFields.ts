@@ -156,9 +156,22 @@ export interface CategoryFieldsByExternalIDParams {
   flat?: boolean;
 }
 
+export interface CategoryFieldsByExternalIDResponse {
+  common_category_fields?: {
+    flatFields: CategoryField[];
+    childrenFields?: CategoryField[];
+    parentFieldLookup?: Record<string, string>;
+  };
+  [categoryID: string]: {
+    flatFields: CategoryField[];
+    childrenFields?: CategoryField[];
+    parentFieldLookup?: Record<string, string>;
+  } | undefined;
+}
+
 export async function fetchCategoryFieldsByExternalID(
   params: CategoryFieldsByExternalIDParams
-): Promise<CategoryFieldsResponse> {
+): Promise<CategoryFieldsByExternalIDResponse> {
   try {
     const queryParams = new URLSearchParams({
       categoryExternalIDs: params.categoryExternalIDs,
@@ -195,7 +208,7 @@ export async function fetchCategoryFieldsByExternalID(
       throw new Error(`Failed to fetch category fields: ${response.statusText}`);
     }
 
-    const data: CategoryFieldsResponse = await response.json();
+    const data: CategoryFieldsByExternalIDResponse = await response.json();
     console.log(`✅ Fetched category fields by external ID`);
     return data;
   } catch (error) {
